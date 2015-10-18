@@ -63,7 +63,7 @@ public class SAXParser extends DefaultHandler {
             var.setDegree(new String(ch, start, length));
         }
 
-        if (thisElement.equals("dateOfbirth")) {
+        if (thisElement.equals("dateOfBirth")) {
             try {
                 var.setDateOfBirth(dt.parse(new String(ch, start, length)));
             } catch (ParseException e) {
