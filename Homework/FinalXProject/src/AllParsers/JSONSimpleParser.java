@@ -18,7 +18,7 @@ public class JSONSimpleParser {
         JSONParser parser = new JSONParser();
         JSONArray arr = new JSONArray(); {
             try {
-                JSONObject object = (JSONObject)parser.parse(new FileReader("test.json"));
+                JSONObject object = (JSONObject)parser.parse(new FileReader("student.json"));
 
                 if(object.containsKey("students")) {
                     arr = (JSONArray)object.get("students");
