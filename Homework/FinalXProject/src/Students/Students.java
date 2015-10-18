@@ -7,7 +7,7 @@ import java.util.List;
  * Created by Pavlik on 10/18/15.
  */
 
-public abstract class Students {
+public class Students {
 
     private String name;
     private String degree;
