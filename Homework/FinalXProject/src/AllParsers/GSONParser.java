@@ -21,7 +21,7 @@ public class GSONParser  extends Root {
 
         try {
             Gson gson = new Gson();
-            BufferedReader buffRead = new BufferedReader(new FileReader("test.json"));
+            BufferedReader buffRead = new BufferedReader(new FileReader("student.json"));
              Root root = gson.fromJson(buffRead, Root.class);
 
             lst = root.getStudents();
