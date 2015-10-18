@@ -2,9 +2,7 @@ package Threads;
 
 import Students.Students;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -12,7 +10,7 @@ import java.net.URL;
 /**
  * Created by Pavlik on 10/18/15.
  */
-public class Thread extends java.lang.Thread{
+public abstract class Thread implements Runnable  {
 
     private URL downloader;
     private Students students;
@@ -37,24 +35,60 @@ public class Thread extends java.lang.Thread{
         this.students = students;
     }
 
+
     @Override
     public void run() {
-        super.run();
+        URLConnection(json);
+        URLConnection(xml);
     }
 
-    public BufferedReader URLConnection () {
+    public String URLConnection (String fileLink) {
 
-        HttpURLConnection connect;
-        BufferedReader input = null;
+        InputStream in = null;
+        OutputStream out = null;
+        String fileName = "";
+
+
         try {
-            downloader = new URL(json);
-            connect = (HttpURLConnection)downloader.openConnection();
-            input = new BufferedReader(new InputStreamReader((connect.getInputStream())));
+            if (fileLink.equals(json)) {
+                fileName= "students.json";
+            }
+
+            if (fileLink.equals(xml)) {
+                fileName= "students.xml";
+            }
+
+            URL url = new URL (fileLink);
+            HttpURLConnection connect = (HttpURLConnection)url.openConnection();
+
+            int status = connect.getResponseCode();
+            if (status == HttpURLConnection.HTTP_OK) {
+                in = connect.getInputStream();
+                File file = new File(fileName);
+                out = new FileOutputStream(file);
+            }
+
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if (in !=null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (out != null) {
+                try {
+                     out.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        return fileLink;
         }
-        return input;
+
     }
-}
