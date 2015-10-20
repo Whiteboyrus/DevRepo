@@ -10,7 +10,7 @@ import java.net.URL;
 /**
  * Created by Pavlik on 10/18/15.
  */
-public abstract class Thread implements Runnable  {
+public abstract class Threads implements Runnable  {
 
     private URL downloader;
     private Students students;
