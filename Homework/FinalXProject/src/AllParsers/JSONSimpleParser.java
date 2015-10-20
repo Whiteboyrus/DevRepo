@@ -14,7 +14,6 @@ public class JSONSimpleParser {
 
     public static void parse () {
 
-
         JSONParser parser = new JSONParser();
         JSONArray arr = new JSONArray(); {
             try {

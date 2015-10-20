@@ -53,11 +53,10 @@ public abstract class Threads extends Thread  {
 
     @Override
     public void run() {
-        parse();
+       parse();
     }
 
     public String URLConnection (String fileLink) {
-
 
         InputStream in = null;
         OutputStream out = null;
@@ -81,6 +80,7 @@ public abstract class Threads extends Thread  {
                 in = connect.getInputStream();
                 File file = new File(fileName);
                 out = new FileOutputStream(file);
+                System.out.print("Файл загружен");
             }
 
         } catch (MalformedURLException e) {

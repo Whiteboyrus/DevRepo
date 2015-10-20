@@ -29,7 +29,7 @@ public class StarterXML extends Threads{
 
         try {
             javax.xml.parsers.SAXParser parser = saxFact.newSAXParser();
-            parser.parse(this.getFileName(), saxParser);
+            parser.parse(new File("file"), saxParser);
             saxParser.outList();
         } catch (ParserConfigurationException e) {
             e.printStackTrace();

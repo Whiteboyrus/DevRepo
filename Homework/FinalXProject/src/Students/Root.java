@@ -34,6 +34,4 @@ public abstract class Root {
     public void setLocation(String location) {
         this.location = location;
     }
-
-
 }

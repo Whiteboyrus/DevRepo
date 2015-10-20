@@ -13,6 +13,6 @@ public class Main extends Thread {
 
 Manager man = new Manager();
         man.xml();
-        System.out.print("fegwg");
+        System.out.print("Тест main");
     }
 }
