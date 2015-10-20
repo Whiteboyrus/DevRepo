@@ -10,21 +10,37 @@ import java.net.URL;
 /**
  * Created by Pavlik on 10/18/15.
  */
-public abstract class Threads implements Runnable  {
+public abstract class Threads extends Thread  {
 
-    private URL downloader;
+    URL downloader;
     private Students students;
     private String doc;
 
+
+    String fileName = "";
+
     public static final String json= "http://kiparo.ru/t/student.json";
     public static final String xml= "http://kiparo.ru/t/student.xml";
+
+    public Threads(String downloader) {
+        this.setDownloader(downloader);
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
 
     public URL getDownloader() {
         return downloader;
     }
 
-    public void setDownloader(URL downloader) {
-        this.downloader = downloader;
+    public void setDownloader(String downloader) {
+        this.doc = downloader;
     }
 
     public Students getStudents() {
@@ -35,21 +51,23 @@ public abstract class Threads implements Runnable  {
         this.students = students;
     }
 
-
     @Override
     public void run() {
-        URLConnection(json);
-        URLConnection(xml);
+        parse();
     }
 
     public String URLConnection (String fileLink) {
 
+
         InputStream in = null;
         OutputStream out = null;
-        String fileName = "";
 
 
         try {
+
+            URL url = new URL (fileLink);
+            HttpURLConnection connect = (HttpURLConnection)url.openConnection();
+
             if (fileLink.equals(json)) {
                 fileName= "students.json";
             }
@@ -57,9 +75,6 @@ public abstract class Threads implements Runnable  {
             if (fileLink.equals(xml)) {
                 fileName= "students.xml";
             }
-
-            URL url = new URL (fileLink);
-            HttpURLConnection connect = (HttpURLConnection)url.openConnection();
 
             int status = connect.getResponseCode();
             if (status == HttpURLConnection.HTTP_OK) {
@@ -88,7 +103,8 @@ public abstract class Threads implements Runnable  {
                     }
                 }
             }
-        return fileLink;
+        return String.valueOf(out);
         }
 
+    public abstract void parse();
     }

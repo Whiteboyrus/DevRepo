@@ -1,15 +1,18 @@
-import Threads.Thread;
+import Manager.Manager;
+import Manager.StarterXML;
+import Threads.Threads;
+
 
 /**
  * Created by Pavlik on 10/18/15.
  */
 public class Main extends Thread {
 
+
     public static void main(String[] args) {
 
-
-        java.lang.Thread thr = new java.lang.Thread();
-
-        thr.run();
+Manager man = new Manager();
+        man.xml();
+        System.out.print("fegwg");
     }
 }

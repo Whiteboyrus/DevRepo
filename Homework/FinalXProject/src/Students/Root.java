@@ -11,7 +11,7 @@ public abstract class Root {
     private String location;
     private List<Students> students;
 
-    public String getName() {
+       public String getName() {
         return name;
     }
 
@@ -34,4 +34,6 @@ public abstract class Root {
     public void setLocation(String location) {
         this.location = location;
     }
+
+
 }
