@@ -3,6 +3,11 @@ import java.util.Scanner;
 /**
  * Created by DMX101 on 24/10/15.
  */
+
+
+                                /*
+          Главный класс, содержит главное меню и вызовы методов
+                                 */
 public class Main extends PubData {
 
     public static void main(String[] args) {

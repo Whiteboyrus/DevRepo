@@ -10,17 +10,16 @@ import java.util.List;
 /**
  * Created by DMX101 on 24/10/15.
  */
-public class GSONParser extends Students{
+                            /*
+        Библиотека GSON для сериализации файла формата GSON, нужно переделать
+                             */
 
-    public GSONParser(ArrayList<Integer> rating) {
-        super(rating);
-    }
+public class GSONParser extends Students {
 
-    public static void GsonSerialize() {
+    private List<Students> lst = new ArrayList<Students>();
+
+        public List<Students> GsonSerialize() {
         Constants constants = new Constants();
-        Manager manager = new Manager();
-
-        List<Students> lst = new ArrayList<Students>();
 
         try {
             Gson gson = new GsonBuilder().setDateFormat(constants.DATE_FORMAT).create();
@@ -37,9 +36,14 @@ public class GSONParser extends Students{
             while (it.hasNext()) {
                 students = it.next();
                 System.out.println(students.toString());
-                 }
+
+            }
         } catch (Exception e) {
             System.err.print(e);
         }
+        return lst;
     }
+
+
+
 }

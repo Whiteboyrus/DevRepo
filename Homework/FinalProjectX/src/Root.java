@@ -6,6 +6,9 @@ import java.util.List;
 /**
  * Created by DMX101 on 24/10/15.
  */
+
+/* Класс Root, содержащий поля name,location, и ArrayList Students, корректен */
+
 public class Root {
 
     private String name;
@@ -13,12 +16,8 @@ public class Root {
 
     private List<Students> students;
 
-    public Root(List<Students> students) {
-    students = new ArrayList<Students>();
-    }
-
     public Root() {
-
+        students = new ArrayList<Students>();
     }
 
     public String getName() {
@@ -45,4 +44,3 @@ public class Root {
         this.location = location;
     }
 }
-

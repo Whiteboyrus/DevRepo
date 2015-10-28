@@ -6,7 +6,12 @@ import java.util.List;
 /**
  * Created by DMX101 on 24/10/15.
  */
-public class Students extends Constants{
+
+                                        /*
+     Модель Students, с её помощью возможен разбор XML и JSON файлов, корректен
+                                         */
+
+public class Students extends Constants {
 
     private String name;
     private String degree;
@@ -16,15 +21,11 @@ public class Students extends Constants{
     private Date dateOfBirth;
     private SimpleDateFormat simpleDateFormat;
 
-    Root root = new Root();
 
-    public Students(ArrayList<Integer> rating) {
-        this.rating = rating;
-        rating = new ArrayList<Integer>();
-        simpleDateFormat = new SimpleDateFormat(DATE_FORMAT);
-    }
 
     public Students() {
+        simpleDateFormat = new SimpleDateFormat(DATE_FORMAT);
+        rating = new ArrayList<Integer>();
 
     }
 
@@ -76,9 +77,6 @@ public class Students extends Constants{
         this.dateOfBirth = dateOfBirth;
     }
 
-
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -93,9 +91,7 @@ public class Students extends Constants{
         if (rating != null ? !rating.equals(students.rating) : students.rating != null) return false;
         if (dateOfBirth != null ? !dateOfBirth.equals(students.dateOfBirth) : students.dateOfBirth != null)
             return false;
-        if (simpleDateFormat != null ? !simpleDateFormat.equals(students.simpleDateFormat) : students.simpleDateFormat != null)
-            return false;
-        return !(root != null ? !root.equals(students.root) : students.root != null);
+        return !(simpleDateFormat != null ? !simpleDateFormat.equals(students.simpleDateFormat) : students.simpleDateFormat != null);
 
     }
 
@@ -108,19 +104,18 @@ public class Students extends Constants{
         result = 31 * result + id;
         result = 31 * result + (dateOfBirth != null ? dateOfBirth.hashCode() : 0);
         result = 31 * result + (simpleDateFormat != null ? simpleDateFormat.hashCode() : 0);
-        result = 31 * result + (root != null ? root.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "Студент{" +
+        return "Студент - " +
                 "Имя: " + name + '\'' +
                 ", Факультет: " + degree + '\'' +
                 ", Рейтинг: " + rating +
                 ", Видимый: " + visible +
                 ", Идентификатор: " + id +
                 ", Дата рождения: " + dateOfBirth +
-               '}';
+               ';';
     }
 }
