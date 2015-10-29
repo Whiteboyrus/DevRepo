@@ -11,20 +11,20 @@ import java.util.Scanner;
  * Created by DMX101 on 26/10/15.
  */
 
-public class ParsingMenu extends PubData{
+public class ParsingMenu extends PubData {
     private Thread parsingThread = new Thread();
 
     public void parsingMenu() {
 
         Manager manager = new Manager();
-
+        Root root = new Root();
 
         parsingThread = new Thread("\"Парсинг файлов\" - " + parsingThread.getName());
 
         System.out.println("Поток " + parsingThread.getName() + " запущен");
 
         while (!chk) {
-            System.out.println("----------------Выберите метод парсинга:-----------------------");
+            System.out.println("----------------Выберите желаемое действие:--------------------");
             System.out.println("---------------------------------------------------------------");
             System.out.println("Введите \"GJSON\" - сериализация структуры json при помощи GSON");
             System.out.println("---------------------------------------------------------------");
@@ -73,7 +73,8 @@ public class ParsingMenu extends PubData{
 
                 case "exit": {
                     System.out.println("Выход из программы");
-                    return;
+                    System.out.println("До встречи!");
+                    System.exit(0);
                 }
 
                 default:

@@ -15,6 +15,4 @@ public abstract class PubData {
 
     public String input ="";
     public boolean chk = false;
-    Scanner sc;
-
 }

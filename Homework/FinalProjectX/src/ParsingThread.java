@@ -13,7 +13,6 @@ public class ParsingThread implements Runnable{
     private Students students;
     private Manager manager;
 
-
     public ParsingThread() {
 
     }

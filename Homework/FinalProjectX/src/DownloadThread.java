@@ -12,6 +12,16 @@ public class DownloadThread extends PubData implements Runnable {
 
     Constants constants = new Constants();
     Thread threadDownloader = new Thread();
+    Root root = new Root();
+
+    public Root getRoot() {
+        return root;
+    }
+
+    public void setRoot(Root root) {
+        this.root = root;
+    }
+
     File jsonFile = new File(constants.JSON_NAME);
     File xmlFile = new File(constants.XML_NAME);
 

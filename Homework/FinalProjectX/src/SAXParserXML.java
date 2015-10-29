@@ -21,11 +21,11 @@ public class SAXParserXML extends DefaultHandler {
 
     private String thisElement;
     private Constants constants;
-    private Students students;
     private List<Students> list;
+    private Students students;
     private Root root;
     private SimpleDateFormat simpleDateFormat;
-    private boolean chk;
+    private boolean chk = false;
 
     public SAXParserXML() {
         simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -35,7 +35,7 @@ public class SAXParserXML extends DefaultHandler {
 
     @Override
     public void startDocument() throws SAXException {
-        System.out.print("Старт парсинга файла student.xml при помощи SAX...");
+        System.out.println("Старт парсинга файла student.xml при помощи SAX...");
     }
 
     @Override
@@ -51,7 +51,9 @@ public class SAXParserXML extends DefaultHandler {
         }
 
         if (thisElement.equals("id")) {
-           // students.setId(Integer.valueOf(new String(ch, start, length)));
+            chk = true;
+            students = new Students();
+            students.setId(Integer.valueOf(new String(ch, start, length)));
         }
 
         if (thisElement.equals("name")) {
@@ -63,8 +65,7 @@ public class SAXParserXML extends DefaultHandler {
         }
 
         if(thisElement.equals("degree")) {
-            students.setDegree(new String(ch, start,length));
-
+          students.setDegree(new String(ch, start,length));
         }
 
         if (thisElement.equals("dateOfBirth")) {
@@ -72,12 +73,17 @@ public class SAXParserXML extends DefaultHandler {
             try {
                 students.setDateOfBirth(simpleDateFormat.parse(new String(ch,start,length)));
             } catch (ParseException e) {
-                System.out.println(e.getMessage());
+                e.printStackTrace();
+            }
+
+            if (thisElement.equals("rating")) {
+
+                students.setRating(Integer.valueOf(new String(ch,start,length)));
+
             }
 
             if (thisElement.equals("visible")) {
                 students.setVisible(Boolean.valueOf(new String(ch, start, length)));
-                root.setStudents(students);
             }
         }
     }
@@ -85,10 +91,17 @@ public class SAXParserXML extends DefaultHandler {
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
         thisElement = "";
+
     }
 
     @Override
     public void endDocument() throws SAXException {
         System.out.println("Завершение парсинга файла student.xml ...");
+        root.setStudents(students);
+        System.out.println(root.getStudents());
+    }
+
+    public Students getStudents() {
+        return students;
     }
 }

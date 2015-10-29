@@ -26,7 +26,6 @@ public class Students extends Constants {
     public Students() {
         simpleDateFormat = new SimpleDateFormat(DATE_FORMAT);
         rating = new ArrayList<Integer>();
-
     }
 
     public String getName() {

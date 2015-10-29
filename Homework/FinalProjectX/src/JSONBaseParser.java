@@ -68,8 +68,6 @@ public class JSONBaseParser {
 
                 root.setStudents(students);
                 System.out.println(students.toString());
-                System.out.print(manager.DATE_FORMAT);
-
             }
 
         } catch (FileNotFoundException e) {

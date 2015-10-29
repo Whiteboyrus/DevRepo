@@ -36,14 +36,10 @@ public class GSONParser extends Students {
             while (it.hasNext()) {
                 students = it.next();
                 System.out.println(students.toString());
-
             }
         } catch (Exception e) {
             System.err.print(e);
         }
         return lst;
     }
-
-
-
 }
