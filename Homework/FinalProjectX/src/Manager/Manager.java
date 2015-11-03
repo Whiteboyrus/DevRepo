@@ -1,50 +1,75 @@
 package Manager;
 
-import Models.Root;
-import Models.Students;
+import models.Root;
+import models.Students;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
 
 /**
  * Created by DMX101 on 25/10/15.
  */
 
-                                                                /*
-Класс Manager, содержит вывод всех студентов, паттерн Singleton, сортировку, поиск по заданным параметрам. Пока ничего этого нету :(
-                                                                */
+/*
+Класс Manager, содержит вывод всех студентов, паттерн Singleton, сортировку, поиск
+ */
 
-public class Manager extends Students {
-    Root root = new Root();
+public class Manager {
 
-   /* public void allStudents() {
+    /*
+    Объявление переменных
+     */
+    private Root root = new Root();
+    private Students students = new Students();
 
+    private List<Integer> rate = new ArrayList<>();
+    private List<Students> studentsList = new ArrayList<>();
 
-        List<Students> list = root.getStudents();
+    /*Сеттеры для ArrayList rate и students, для передачи значений в ArrayLists класса Manager
+     */
 
-        System.out.println("Все студенты: ");
+    public void setStudentsList(List<Students> studentsList) {
+        this.studentsList = studentsList;
+    }
 
-        for (Students students : list) {
+    public void setRate(List<Integer> rate) {
+        this.rate = rate;
+    }
 
-            System.out.println(students.toString());
+    /*
+    Метод averageMark, предназначен для расчёта средней оценки каждого студента
+     */
+    public void averageMark() {
 
+        double sum = 0;
+        double rez = 0;
+
+        for (int i = 0; i < rate.size(); i++) {
+            sum += rate.get(i);
         }
-    }*/
-
-
-    public void sortingByName() {
-
-        List<Students> studentsList = root.getStudents();
-        System.out.print("Сортировка студентов по имени: ");
-        Collections.sort(studentsList,new CompareName());
-
+        rez = sum / rate.size();
+        System.out.println("Средний балл: " + rez);
     }
 
 
-    class CompareName implements Comparator<Students> {
 
+    /*
+    Метод sortByName, предназначен для сортировки студентов по имени, использует класс CompareName
+     */
+    public void sortByName() {
+        System.out.println("-------------------------------");
+        System.out.println("Сортировка студентов по имени: ");
+        System.out.println("-------------------------------");
+        for (int i = 0; i < studentsList.size(); i++) {
+            Collections.sort(studentsList, new CompareName());
+            System.out.println(studentsList.get(i));
+        }
+    }
+
+    /*
+    Класс CompareName, содержит переопределённый метод compare, выполняет сравнивание имён при помощи CompareTo,
+    ищет подстроку и подаёт её в переменную.
+     */
+    class CompareName implements Comparator<Students> {
 
         @Override
         public int compare(Students student1, Students student2) {
@@ -52,25 +77,26 @@ public class Manager extends Students {
             String fio1 = student1.getName();
             String fio2 = student2.getName();
 
-            String name1 = fio1.substring(0, fio1.indexOf(""));
-            String name2 = fio2.substring(0, fio2.indexOf(""));
+            String name1 = fio1.substring(0, fio1.indexOf(" "));
+            String name2 = fio2.substring(0, fio2.indexOf(" "));
 
             return name1.compareTo(name2);
         }
     }
 
-                                            /*
-                    Singleton pattern со статической константой INSTANCE,
-                    которая содержит экземпляр класса Manager.Manager
-                                            */
+        /*
+    Singleton pattern со статической константой INSTANCE,
+    которая содержит экземпляр класса Manager.Manager
+        */
         private static class Singleton {
 
-        private final static Manager INSTANCE = new Manager();
+            private final static Manager INSTANCE = new Manager();
+
+
+            public static Manager getInstance() {
+
+                return Singleton.INSTANCE;
+
+            }
+        }
     }
-
-    public static Manager getInstance() {
-
-        return Singleton.INSTANCE;
-
-    }
-}
