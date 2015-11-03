@@ -1,7 +1,7 @@
 package parsers;
 
 import constants.Constants;
-import Manager.Manager;
+import manager.Manager;
 import models.Root;
 import models.Students;
 import org.json.simple.JSONArray;

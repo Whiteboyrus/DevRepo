@@ -1,9 +1,6 @@
-package manager;
+package main;
 
 import menuModel.MainMenu;
-
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 /**
  * Created by DMX101 on 24/10/15.

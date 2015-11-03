@@ -1,4 +1,4 @@
-package Manager;
+package manager;
 
 import models.Root;
 import models.Students;
@@ -10,7 +10,7 @@ import java.util.*;
  */
 
 /*
-Класс Manager, содержит вывод всех студентов, паттерн Singleton, сортировку, поиск
+Класс manager, содержит вывод всех студентов, паттерн Singleton, сортировку, поиск
  */
 
 public class Manager {
@@ -24,7 +24,7 @@ public class Manager {
     private List<Integer> rate = new ArrayList<>();
     private List<Students> studentsList = new ArrayList<>();
 
-    /*Сеттеры для ArrayList rate и students, для передачи значений в ArrayLists класса Manager
+    /*Сеттеры для ArrayList rate и students, для передачи значений в ArrayLists класса manager
      */
 
     public void setStudentsList(List<Students> studentsList) {
@@ -86,7 +86,7 @@ public class Manager {
 
         /*
     Singleton pattern со статической константой INSTANCE,
-    которая содержит экземпляр класса Manager.Manager
+    которая содержит экземпляр класса manager.manager
         */
         private static class Singleton {
 

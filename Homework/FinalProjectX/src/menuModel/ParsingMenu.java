@@ -1,7 +1,7 @@
 package menuModel;
 
 import abstracts.abstractClass;
-import Manager.Manager;
+import manager.Manager;
 import models.Root;
 import parsers.GSONParser;
 import parsers.JSONBaseParser;
