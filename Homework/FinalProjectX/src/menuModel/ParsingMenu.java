@@ -30,7 +30,7 @@ public class ParsingMenu extends abstractClass {
     /*
     Метод, содержащий меню парсинга файлов, запускается после загрузки, либо отдельно, в любом случае новым потоком.
      */
-        public void parsingMenu() {
+    public void parsingMenu() {
 
         Manager manager = new Manager();
         Root root = new Root();
@@ -43,64 +43,73 @@ public class ParsingMenu extends abstractClass {
         System.out.println("Поток " + parsingThread.getName() + " запущен");
 
         while (!chk) {
+            System.out.println("-                                                             -");
             System.out.println("----------------Выберите желаемое действие:--------------------");
             System.out.println("---------------------------------------------------------------");
-            System.out.println("Введите \"GJSON\" - сериализация структуры json при помощи GSON");
+            System.out.println("Введите \"1\" - сериализация структуры json при помощи GSON -->");
             System.out.println("---------------------------------------------------------------");
-            System.out.println("Введите \"SJSON\" - сериализация структуры json при помощи Jackson");
+            System.out.println("Введите \"2\" - сериализация структуры json при помощи JSONSimple -->");
             System.out.println("---------------------------------------------------------------");
-            System.out.println("Введите \"SAXXML\" - парсинг структуры XML при помощи SAXParser");
+            System.out.println("Введите \"3\" - парсинг структуры XML при помощи SAXParser -->");
             System.out.println("---------------------------------------------------------------");
-            System.out.println("Введите \"exit\" - Выход из программы");
+            System.out.println("Введите \"4\" - Выход из программы -->");
+            System.out.println("---------------------------------------------------------------");
+            System.out.println("Введите \"5\" - Возврат в главное меню -->");
             System.out.println("---------------------------------------------------------------");
 
             Scanner sc = new Scanner(System.in);
             String input = sc.nextLine();
 
-            switch (input) {
+            if (input.matches("^[1-5]$")) {
 
-                case "GJSON": {
-                    System.out.println("Вы выбрали сериализацию при помощи библиотеки \"GSON\"");
-                    GSONParser gsonParser = new GSONParser();
-                    gsonParser.GsonSerialize();
-                    break;
-                }
+                switch (input) {
 
-                case "SJSON": {
-                    System.out.println("Вы выбрали сериализацию при помощи библиотеки \"JSON Simple\"");
-                    JSONBaseParser jsonBaseParser = new JSONBaseParser();
-                    jsonBaseParser.jsonBaseparser();
-                    break;
-                }
-
-                case "SAXXML": {
-                    System.out.println("Вы выбрали сериализацию при помощи библиотеки \"SAX\"");
-                    SAXParserFactory factory = SAXParserFactory.newInstance();
-                    try {
-                        SAXParser parser = factory.newSAXParser();
-                        SAXParserXML saxParserXML = new SAXParserXML();
-                        parser.parse(new File("student.xml"), saxParserXML);
-                    } catch (ParserConfigurationException e) {
-                        e.printStackTrace();
-                    } catch (SAXException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    case "1": {
+                        System.out.println("Вы выбрали сериализацию при помощи библиотеки \"GSON\"");
+                        GSONParser gsonParser = new GSONParser();
+                        gsonParser.GsonSerialize();
+                        break;
                     }
-                    break;
-                }
 
-                case "exit": {
-                    System.out.println("Выход из программы");
-                    System.out.println("До встречи!");
-                    System.exit(0);
-                }
+                    case "2": {
+                        System.out.println("Вы выбрали сериализацию при помощи библиотеки \"JSON Simple\"");
+                        JSONBaseParser jsonBaseParser = new JSONBaseParser();
+                        jsonBaseParser.jsonBaseparser();
+                        break;
+                    }
 
-                default:
-                    System.out.println("Неверный ввод! Повторите...");
-                    break;
+                    case "3": {
+                        System.out.println("Вы выбрали сериализацию при помощи библиотеки \"SAX\"");
+                        SAXParserFactory factory = SAXParserFactory.newInstance();
+                        try {
+                            SAXParser parser = factory.newSAXParser();
+                            SAXParserXML saxParserXML = new SAXParserXML();
+                            parser.parse(new File("student.xml"), saxParserXML);
+                        } catch (ParserConfigurationException e) {
+                            e.printStackTrace();
+                        } catch (SAXException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                    }
+
+                    case "4": {
+                        System.out.println("Выход из программы\n");
+                        System.out.println("До встречи!");
+                        System.exit(0);
+                    }
+
+                    case "5": {
+                        System.out.println("Вы выбрали возврат в главное меню -- >");
+                        mainMenu.mainMenu();
+
+                    }
+                }
+            } else {
+                System.out.printf("\nНекорректный ввод! Введите цифру от 1 до 5\n");
             }
         }
-
     }
 }

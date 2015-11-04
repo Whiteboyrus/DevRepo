@@ -56,10 +56,10 @@ public class DownloadThread extends abstractClass implements Runnable {
             try {
                 fileDownloader(abstractClass.JSON_URL);
                 fileDownloader(abstractClass.XML_URL);
+                System.out.println("Файлы " +jsonFile+ " и " +xmlFile+ " загружены и сохранены в каталог проекта.");
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        System.out.println("Файлы " +jsonFile+ " и " +xmlFile+ " загружены и сохранены в каталог проекта.");
         }
 
 
@@ -119,7 +119,7 @@ public class DownloadThread extends abstractClass implements Runnable {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Не удаётся загрузить "  +jsonFile+ " и " +xmlFile+ "! Проверьте подключение!");
         }
         return fileURL;
     }

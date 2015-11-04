@@ -30,41 +30,41 @@ public class MainMenu extends KeyAdapter {
         System.out.println("\\\\    Введите \"startp\" для парсинга без загрузки        //");
         System.out.println("\\\\    Введите \"exit\" для выхода из программы            //");
         System.out.println("\\\\------------------------------------------------------//");
-        System.out.println("\\\\                    Павел Руденков, 2015              //");
+        System.out.println("\\\\               Павел Руденков, 2015                   //");
         System.out.println("\\\\                                                      //");
         System.out.println("\\\\||||||||||||||||||||||||||||||||||||||||||||||||||||||//");
 
-        Scanner sc = new Scanner(System.in);
-        input = sc.nextLine();
 
 
-        while (!chk) {
+            while (!chk) {
+                Scanner sc = new Scanner(System.in);
+                input = sc.nextLine();
 
-            switch (input) {
+                switch (input) {
 
-                case "start": {
-                    dpStarters.startDownload();
-                    dpStarters.startParsing();
-                    break;
-                }
+                    case "start": {
+                        dpStarters.startDownload();
+                        dpStarters.startParsing();
+                        break;
+                    }
 
-                case "startp": {
-                    dpStarters.startParsing();
-                    break;
-                }
+                    case "startp": {
+                        dpStarters.startParsing();
+                        break;
+                    }
 
-                case "exit": {
-                    System.out.println("Выход из программы");
-                    System.out.println("До встречи!");
-                    System.exit(0);
-                }
+                    case "exit": {
+                        System.out.println("Выход из программы");
+                        System.out.println("До встречи!");
+                        System.exit(0);
+                        break;
+                    }
 
-                default: {
-                    System.out.println("Введён неверный параметр, повторите ввод!");
+                    default: {
+                        System.out.println("Некорректный ввод, повторите");
+                        break;
+                    }
                 }
             }
         }
     }
-
-
-}
