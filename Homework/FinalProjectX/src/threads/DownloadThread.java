@@ -45,7 +45,7 @@ public class DownloadThread extends abstractClass implements Runnable {
     }
 
     /*
-    Синхронизированный переопределённый метод run.
+    Синхронизированный переопределённый метод run, отвечает за запуск загрузчика файлов.
      */
 
     @Override

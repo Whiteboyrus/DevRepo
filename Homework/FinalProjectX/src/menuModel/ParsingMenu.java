@@ -42,6 +42,10 @@ public class ParsingMenu extends abstractClass {
 
         System.out.println("Поток " + parsingThread.getName() + " запущен");
 
+        /*
+Цикл while, отвечает за цикличность исполнения части программы, в данном случае за меню парсера
+ */
+
         while (!chk) {
             System.out.println("-                                                             -");
             System.out.println("----------------Выберите желаемое действие:--------------------");
@@ -104,7 +108,6 @@ public class ParsingMenu extends abstractClass {
                     case "5": {
                         System.out.println("Вы выбрали возврат в главное меню -- >");
                         mainMenu.mainMenu();
-
                     }
                 }
             } else {

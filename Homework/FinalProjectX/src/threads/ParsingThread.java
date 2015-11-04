@@ -21,6 +21,10 @@ public class ParsingThread implements Runnable {
     private ParsingMenu parsingMenu = new ParsingMenu();
     private Thread parsingThread = new Thread();
 
+    /*
+    Переопределенный синхронищированный метод run(), осуществляет запуск меню парсеров
+     */
+
     @Override
     public synchronized void run() {
         parsingMenu.parsingMenu();

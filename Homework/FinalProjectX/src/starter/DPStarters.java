@@ -16,6 +16,10 @@ import threads.ParsingThread;
 public class DPStarters extends abstractClass {
 
 
+    /*
+    Метод startParsing, отвечает за запуск потока парсеров.
+     */
+
     public void startParsing() {
         ParsingThread parsingThread = new ParsingThread();
         parsingThread.run();
@@ -26,6 +30,10 @@ public class DPStarters extends abstractClass {
             e.printStackTrace();
         }
     }
+
+    /*
+    Метод startDownload, отвечает за запусе потока загрузки
+     */
 
     public void startDownload() {
         DownloadThread downloadThread = new DownloadThread(JSON_URL, XML_URL);

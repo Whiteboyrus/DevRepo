@@ -35,6 +35,9 @@ public class MainMenu extends KeyAdapter {
         System.out.println("\\\\||||||||||||||||||||||||||||||||||||||||||||||||||||||//");
 
 
+/*
+Цикл while, отвечает за цикличность исполнения части программы, в данном случае за главное меню
+ */
 
             while (!chk) {
                 Scanner sc = new Scanner(System.in);

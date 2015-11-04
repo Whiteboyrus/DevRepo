@@ -22,6 +22,10 @@ public class GSONParser extends Students {
 
     List<Integer> rate = new ArrayList<>();
 
+    /*
+    Метод GsonSerialize, отвечает за сериализацию json, содержит несколько ArrayList, также осуществляет обработку и вывод
+    информации, при сериализации обращается к модели Students
+     */
     public List<Students> GsonSerialize() {
         Constants constants = new Constants();
         List<Students> studentsList = new ArrayList<Students>();
