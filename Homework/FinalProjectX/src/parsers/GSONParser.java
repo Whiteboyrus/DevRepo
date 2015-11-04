@@ -52,7 +52,7 @@ public class GSONParser extends Students {
             manager.sortByName();
 
         } catch (Exception e) {
-            System.err.print(e);
+            System.out.println("Файла не существует! Его нужно загрузить!");
         }
         return studentsList;
     }

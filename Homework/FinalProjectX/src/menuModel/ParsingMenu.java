@@ -90,7 +90,7 @@ public class ParsingMenu extends abstractClass {
                         } catch (SAXException e) {
                             e.printStackTrace();
                         } catch (IOException e) {
-                            e.printStackTrace();
+                            System.out.println("Файла не существует! Его нужно загрузить!");
                         }
                         break;
                     }

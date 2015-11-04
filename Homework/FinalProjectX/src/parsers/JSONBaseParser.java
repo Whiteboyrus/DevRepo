@@ -94,7 +94,7 @@ public class JSONBaseParser {
             manager.sortByName();
 
         } catch (FileNotFoundException e1) {
-            e1.printStackTrace();
+            System.out.println("Файла не существует! Его нужно загрузить!");
         } catch (java.text.ParseException e1) {
             e1.printStackTrace();
         } catch (ParseException e1) {

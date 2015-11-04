@@ -41,7 +41,7 @@ public class DownloadThread extends abstractClass implements Runnable {
         this.JSON_URL = jsonURL;
         this.XML_URL = xmlURL;
 
-        threadDownloader.start();
+        threadDownloader.run();
     }
 
     /*
@@ -51,14 +51,14 @@ public class DownloadThread extends abstractClass implements Runnable {
     @Override
     public synchronized void run() {
 
-        System.out.println("Поток "+threadDownloader.getName()+" запущен,идёт загрузка, один момент...");
+        System.out.println("Поток "+threadDownloader.getName()+" запущен, идёт загрузка "+jsonFile + " и " +xmlFile+ ", один момент...");
 
             try {
                 fileDownloader(abstractClass.JSON_URL);
                 fileDownloader(abstractClass.XML_URL);
-                System.out.println("Файлы " +jsonFile+ " и " +xmlFile+ " загружены и сохранены в каталог проекта.");
             } catch (IOException e) {
-                e.printStackTrace();
+
+
             }
         }
 
@@ -116,10 +116,13 @@ public class DownloadThread extends abstractClass implements Runnable {
 
             if (fileOutputStreamJSON != null) {
                 fileOutputStreamXML.close();
+                fileOutputStreamJSON.close();
             }
 
         } catch (IOException e) {
+            System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
             System.out.println("Не удаётся загрузить "  +jsonFile+ " и " +xmlFile+ "! Проверьте подключение!");
+            System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
         }
         return fileURL;
     }
